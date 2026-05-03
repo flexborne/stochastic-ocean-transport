@@ -109,7 +109,6 @@ contains
       do i = 2, nx - 1
         do j = 2, ny - 1
           c(i, j, next_layer) = advection_step(i, j, diff_layer, c, u, v, dx, dy, dt)
-          if (c(i, j, next_layer) < 0.0d0) c(i, j, next_layer) = 0.0d0
         end do
       end do
 
@@ -197,6 +196,12 @@ contains
     end if
     if (j > 1 .and. j < ny) then
       diffusion_step = diffusion_step + diffusivity * (c(i, j + 1, layer) - 2.0d0 * c(i, j, layer) + c(i, j - 1, layer)) * dt / (dy * dy)
+    end if
+    if (j == 2 .or. j == ny - 1) then
+      diffusion_step = diffusion_step + diffusivity * c(i, j, layer) * dt / (dy * dy)
+    end if
+    if (i == 2 .or. i == nx - 1) then
+      diffusion_step = diffusion_step + diffusivity * c(i, j, layer) * dt / (dx * dx)
     end if
   end function diffusion_step
 

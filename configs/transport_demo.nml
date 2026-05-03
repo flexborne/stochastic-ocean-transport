@@ -1,0 +1,19 @@
+&transport_config
+  nx = 64,
+  ny = 64,
+  length_x = 10000000.0,
+  length_y = 6249000.0,
+  diffusivity = 1000.0,
+  seconds_per_day = 86400.0,
+  time_steps_per_day = 16,
+  member_id = 0,
+  day_start = 0,
+  day_end = 10,
+  source_i = 32,
+  source_j = 56,
+  release_duration_days = 10.0,
+  release_rate = 1.0,
+  velocity_dir = "../data/velocity",
+  input_dir = "../data/input",
+  output_dir = "../data/output"
+/

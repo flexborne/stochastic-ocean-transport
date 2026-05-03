@@ -1,0 +1,45 @@
+# Lightweight configuration for a quick smoke test.
+
+domain:
+  length_x_m: 10000000.0
+  length_y_m: 6249000.0
+  grid_x: 64
+  grid_y: 64
+
+stommel:
+  depth_m: 200.0
+  friction_coefficient_m_s: 0.02
+  beta_m_inv_s_inv: 1.0e-11
+  wind_stress_curl_amplitude_m2_s2: 1.0e-4
+  fourier_modes: 8
+
+stochastic_forcing:
+  enabled: true
+  relative_std: 0.1
+  correlation_radius_m: 200000.0
+  ensemble_size: 3
+  random_seed: 42
+
+transport:
+  diffusivity_m2_s: 1000.0
+  release_duration_days: 10.0
+  release_rate_kg_s: 1.0
+  simulation_days: 100
+  time_steps_per_day: 16
+  source:
+    x_m: 4990000.0
+    y_m: 5606520.0
+
+analysis:
+  enabled: true
+  reference_streamfunction: data/reference/w_o.txt
+  reference_velocity: data/reference/vel_w_o.txt
+  correlation_reference_points:
+    near_origin: [1, 1]
+    center: [32, 32]
+
+paths:
+  input_dir: data/input
+  velocity_dir: data/velocity
+  output_dir: data/output
+  reference_dir: data/reference
